@@ -17,11 +17,23 @@ const pAequorFactory = (specimenNum, dna) => {
   return {
     specimenNum,
     dna,
+    mutate() {
+      let randNum = Math.floor(Math.random() * 15);
+      let randBase = this.dna[randNum];
+      let newBase = returnRandBase();
+      while (newBase === randBase) {
+        newBase = returnRandBase();
+      }
+      this.dna[randNum] = newBase;
+      return this.dna;
+    }
   }
 }
 
-let organism = pAequorFactory(1, mockUpStrand());
-console.log(organism);
+// const organism = pAequorFactory(1, mockUpStrand());
+// console.log(organism);
+// organism.mutate();
+// console.log(organism);
 
 
 
