@@ -26,15 +26,33 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       this.dna[randNum] = newBase;
       return this.dna;
+    }, 
+    compareDNA(pAequorObj) {
+      const dnaToCompare = pAequorObj.dna;
+      let numCommonBases = 0;
+      for (let i = 0; i < dnaToCompare.length; i++) {
+        if (dnaToCompare[i] === this.dna[i]) {
+          numCommonBases++;
+        }
+      }
+      const percentCommonBases = ((numCommonBases / this.dna.length) * 100).toFixed(2);
+      console.log(`Specimen ${this.specimenNum} and ${pAequorObj.specimenNum} have ${percentCommonBases}% DNA in common.`);
     }
   }
 }
 
-// const organism = pAequorFactory(1, mockUpStrand());
-// console.log(organism);
-// organism.mutate();
-// console.log(organism);
+// const organism1 = pAequorFactory(1, mockUpStrand());
+// const organism2 = pAequorFactory(2, mockUpStrand());
+// console.log(organism1);
+// console.log(organism2);
 
+// organism1.compareDNA(organism2);
+
+// organism1.mutate();
+// organism2.mutate();
+
+// organism1.compareDNA(organism2);
+// organism2.compareDNA(organism1);
 
 
 
