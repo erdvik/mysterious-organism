@@ -37,6 +37,17 @@ const pAequorFactory = (specimenNum, dna) => {
       }
       const percentCommonBases = ((numCommonBases / this.dna.length) * 100).toFixed(2);
       console.log(`Specimen ${this.specimenNum} and ${pAequorObj.specimenNum} have ${percentCommonBases}% DNA in common.`);
+    },
+    willLikelySurvive() {
+      const survivalTreshold = 60;
+      let numBases = 0
+      this.dna.forEach(base => {
+        if (base === 'C' || base === 'G') {
+          numBases++;
+        }
+      })
+      const percentBases = (numBases / this.dna.length) * 100;
+      return percentBases >= survivalTreshold;
     }
   }
 }
@@ -53,6 +64,10 @@ const pAequorFactory = (specimenNum, dna) => {
 
 // organism1.compareDNA(organism2);
 // organism2.compareDNA(organism1);
+
+// console.log(organism1.willLikelySurvive());
+// console.log(organism2.willLikelySurvive());
+
 
 
 
