@@ -50,7 +50,7 @@ const pAequorFactory = (specimenNum, dna) => {
       return percentBases >= survivalTreshold;
     }
   }
-}
+};
 
 // const organism1 = pAequorFactory(1, mockUpStrand());
 // const organism2 = pAequorFactory(2, mockUpStrand());
@@ -68,6 +68,21 @@ const pAequorFactory = (specimenNum, dna) => {
 // console.log(organism1.willLikelySurvive());
 // console.log(organism2.willLikelySurvive());
 
+const pAequorProducer = numSpecimen => {
+  let pAequorArray = [];
+  for (let i = 0; i < numSpecimen; i++) {
+    let specimen = pAequorFactory(i, mockUpStrand());
+    while (!specimen.willLikelySurvive()) {
+      specimen = pAequorFactory(i, mockUpStrand());
+    }
+    pAequorArray.push(specimen);
+  }
+  return pAequorArray;
+};
+
+// let pAequorArray = pAequorProducer(50);
+// console.log(pAequorArray.length);
+// pAequorArray.forEach(specimen => console.log(specimen.willLikelySurvive()));
 
 
 
